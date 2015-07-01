@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Addon Author="Potato" APIVersion="9" Name="EngineerResourceManager" Description="">
-    <Script Name="GainDrain.lua"/>
-    <Script Name="EngineerResourceManager.lua"/>
-    <Form Name="EngineerResourceManager.xml"/>
-</Addon>
