@@ -1,0 +1,161 @@
+Milo
+Please let me know the cost for the first generation of this addon.
+
+The script will have two main elements: a resource visualization for current and future volatility and the framework for a UI interface for the selection of which values to display on the resource bar to future proof the script for changes to the engineer class.
+
+The visual resource bar will be two thin rectangles set on top of one another.  The thinnest will be a light warning color like yellow or orange.  The center 30-70 zone will be twice the height of the thinner rectangle and be centered on the lower rectangle with a friendly color to match the warning color choice.  The largest rectangle will be known as INTHEZONE.  Both bars will be surrounded in a halo effect when volatile injection or the engineer innate are active.  I have provided a rough sketch with fig A.
+
+There will be a tall line known as VOLVALUE which will be three times the height of the INTHEZONE rectangle which will move and represent the current volatility value and its color must contrast with the in the zone section.  
+
+To the right of the VOLVALUE there will be two bars offset fifteen and thirty respectively.  They will be two times the height of the bold center line.  These bars will change color based on if they will cause the VOLVALUE to exceed the volatility value of seventy or if dash tokens are depleted.  
+
+BUILDERBARDASH
+If VOLVALUE + 15 >= 30 then set color green  
+If VOLVALUE + 15 > 70 then set color red
+If DASHTOKENVALUE >=DASHRESERVE then set opacity 100%
+If DASHTOKENVALUE <DASHRESERVE then set opacity 0%
+(to start give DASHRESERVE a value of 1.75)
+
+BUILDERBARABILITY
+If VOLVALUE + 30 >= 30 then set color green  
+If VOLVALUE + 30 > 70 then set color red
+
+To the left of VOLVALUE there will be one bar offset by the value twenty five.  It will be known as DRAINBAR and will be two times the height of the INTHEZONE center line.
+DRAINBAR
+If VOLVALUE - 25 >= 25 then set color green
+If VOLVOLUE -25 < 25 then set color red
+
+Green and red may be changed to be more visually pleasing as long as it is easy to determine the state of the indicator.
+
+
+For the UI selection there should be either drop down or check boxes for which values to display for the following abilities:
+Generators
+Bio Shell - 30 Vol
+Energy Auger - 30 Vol
+Dash - 15 Vol
+Dash Reserve Value(should be able to enter a value manually)
+Pulse Blast - 15 Vol
+Target A. - FUCK THIS SHIT
+
+Drains
+Mortar Strike - 25 Vol
+Bolt Caster - 25 Vol
+Electrocute - 24 Vol
+
+These boxes will determine the offset positions of the bars on the resource visualization.  The UI box is not required now but future changes to the class will require this feature.  It should be coded with this in mind.
+
+
+Please let me know if you have any comments or critiques!
+
+
+
+-------------------------------------------------------------
+Potato
+Questions:
+When you list:
+If VOLVALUE - 25 >= 25 then set color green
+If VOLVOLUE -25 < 25 then set color red
+
+I don't know the engineer class well. Should it be 25 or 30? I was under the assumption that you were checking INTHEZONE, as it compares to the 70 upper bound used in the other conditionals.
+Do want the UI you described ALWAYS visable, or more like a settings menu?
+
+My Additions:
+A color chooser for all states of the colors you specified; the defaults will be your suggestions.
+The ability to add new "drains" and "gains". Essentially you name them and add a value to them. This should eliminate the need for any new coding in the future (job security though shitty design is lame).
+Quote:
+25p. It's a little more than what I did for Leylin. There's a lot of checks of different things (dash, resource, etc.), so it's a bit involved, and you have the added bonus that I'm building it for persistence.
+
+Suggestions/Additions:
+
+Of course, these would be a bit extra.
+I can add in the ability to show/hide gains/drains via cooldowns (medium performance hit).
+I can add in auto-detection for abilities based on LAS (no performance hit), so toggling doesn't have to be a thing.
+
+-----------------------------------------------------------------------
+Milo
+The boundary should be 30 in that argument.  Thanks for catching the error.
+
+The UI is a settings menu.
+
+People do not like having a bunch of options.  Really they are most happy when they have 3-5 choices.  For this I would suggest dark, bright, and high contrast color profiles.  I think a dark gray and burnt orange scheme would be good for the dark profile.  The other option is a dark gray and light blue for the dark profile.  I cannot comment on the bright and high contrast profiles as I do not use them but I know that there is some demand for them.
+
+Is it 25P for the project or 25P for the first generation?  The difference being I pay you 25P and whatever you give me I accept and pay for changes to the next generation or I pay you 25P and we work back and fourth a little until it is agreed upon as finished.  I believe that working on a payment schedule based on generations is a better idea.  It protects you more.  Either way my answer is yes to the price of 25P.  Would you like it mailed to Potato Rays or traded in person?
+
+What would the cost of an ability cooldown show/hide be?  This feature would be very useful.  At the very minimum I need this feature for dash tokens.  Dashing myself out of tokens means death by telegraph.  Having this feature for energy auger and bioshell would be helpful but not required.  There needs to be a price tag for this for me to be able to say yes or no.
+
+What would the cost of auto skill detection be?  This feature would be most useful for a released addon.  It would be easier for the user to plug and play.  Noob engineers would greatly benefit from this but I don't know how much I want to invest into their well-being.
+
+-----------------------------------------------------------
+Potato
+I was under the impression that I was making the addon only for you.
+
+Since it was for you, I figured I'd leave the color part open-ended. Since it seems that's not the case, I'll just do what you suggested with a few profiles.
+
+25P for the project. I'll do up to 3 alterations in the first generation, although your in-depth description will make this pretty spot-on. Dash show/hide is included, as I have to hardcode it separately from abilities.
+
+Ability cooldown show/hide would be 10P. It's very involved. I would also (optionally) tack on ability icons to the BUILDERBARABILITY bars. After looking some things over, it won't be much of a performance hit as I originally thought.
+
+Auto skill detection would be 5P. It's fairly simple; I already have the code for it and just need to port it.
+
+----------------------------------------------------------------
+Potato
+Also, my thought on choosing colors was that it gave the user the ability to distinguish Dash from Ability A from Ability B. Otherwise, all 3 (or however) BUILDERBARABILITY bars will look the same.
+
+---------------------------------------------------------------
+Milo
+40P? Done
+
+---------------------------------------------------------------
+Potato
+Current Progress:
+Bar, gains/drains, innate glow, color changing. Colors highly subject to change.
+
+--------------------------------------------------------------
+Milo
+Thank you for version 1 of this addon :D  It runs great!  The resource use is amazing.  Here are my reported bugs, requested changes, and new features requests.  Please let me know if additional payment is required.
+
+REV 1.00 Review - Requests for REV 1.10
+
+
+
+
+
+Bugs
+b1. Volatile Injection activated by a party member provides the engineer a buff and causes the halo effect to activate when the buff is not actually active.  The cool down timer will have to be monitored and the halo effect should be present at cool down time max until cool down time max - 10 seconds.
+
+b2. The position of the resource bar is resetting.  This could be an issue on my end.  Please confirm it is my local issue.
+
+
+
+
+
+
+Changes
+c1. Dash InTheZone color indication should match the other abilities.
+
+c2. The thinnest resource bar should be increased in size by 30%.
+
+c3. Rename addon to SNARE.  I need time to come up with the meaning of the acronym.
+
+
+
+
+
+New Features - Please let me know if additional funds are required for implementation.
+n1. Onload load check to determine if the player is an engineer.  If the player is not an engineer class it should disable or use 0 resources until the next login.  z e r o  If the player is an engineer the default resource bar should be disabled.
+
+n2. Bio Shell InTheZone halo indication.  Could you please add a small faint yellow halo around the Bio Shell icon at the top of the Bio Shell indicator line while InTheZone.
+
+n3, VolValue InTheZone color indication.  Could you please add the same 30-70 argument for color change for the primary VolValue bar as well.  It makes it more apparent at a glance.  The colors should match the scheme of the other abilities.  Please make this easy to comment out as the InTheZone color indication may make this irrelevant.  I cannot know until I see the new features in action.
+
+n4. InTheZone color indication based on volatility being within 30-70.  I would like the orange to become the color it is now when volatility is between 30-70.  While volatility is outside of 30-70 I would like InTheZone to become darker and look faded.  An orange with 10-20% more black would be perfect for outside of 30-70 volatility.
+
+n5. A /snare command to bring up the UI config should be added to make the config window more accessible.
+
+n6. A cool down indicator system should be added for Dash, Bio Shell, Energy Auger, and Mortar Stirke.  While on cool down they should show at 50% opacity.  Their lines should maintain their colors based on position while faded out.  As the cool down decreases, the line should grow from the base of the line up towards the icon at the top.  A pooling interval of 1000ms is probably a good idea resource wise.  1000ms would work fine and would be the most resource efficient solution but if 50ms is possible without a massive resource draw it would be much smoother.  This pooling rate will have to be messed with until a balance between performance and lag is found.  For the Dash indicator, it should disappear if below threshold value - 1 and the line growth should be from threshold value -1 to threshold value.  Opacity should return to 100% when the ability is off cool down.  We may change the opacity to 100% when the ability cool down is =<0.15 seconds to make the script appear to be more responsive than it really is.
+
+n7. A cool down indicator system should be added which is user configurable.  The icons will be fairly small dots with a radius no larger than the height of the smallest rectangle which will have user specified 3 color stage indicator levels.  Stock levels will be If > 50% of cool down, then red, If <=50% of cool down >3 seconds, then yellow, and If =0, then green.  We may change the green indicator to cool down =<0.15 seconds depending on script response time to adjust for the lag of a more efficient pooling rate.  The pooling rate will have to be messed with until a balance between performance and lag is found.  User input for indicator levels will be numeric only to avoid having a zillion slider bars and will allow for percentages and a tenths place for manually entered timings.  The colors should all be somewhat dark to match the color scheme.  Attached is Fig 4, a basic layout idea.  There should be a total of 8 circle locations with 2 being above and below each small rectangle side.  Innate should always be defaulted to location 1.  Volatile Injection should always be defaulted to location 2.  The remaining 6 locations should be user configurable for all the remaining abilities not indicated on the volatility bar.  If no ability is assigned, the circle should not be present.  Quick Burst will not have an indicator gradient and should only appear if off cool down AND active due to a critical strike.
+
+n8. A position setting for the resource bar should be added to the user menu.  The user should be able to set the X and Y coordinates of the bar manually and using a slider.  There should be a snap to middle X button for fast configuration.
+
+Thank you for working on this project!  I look forward to your response.
